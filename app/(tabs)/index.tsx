@@ -34,7 +34,8 @@ export default function GenerateScreen() {
       setError('Please enter a prompt')
       return
     }
-
+    setGeneratedMeme(null)
+    setPrompt('')
     setLoading(true)
     setError(null)
 
@@ -59,77 +60,69 @@ export default function GenerateScreen() {
     }
   }
 
-  const handleNewMeme = () => {
-    setGeneratedMeme(null)
-    setPrompt('')
-  }
+  const handleNewMeme = () => {}
 
   return (
     <SafeAreaView
-      style={[styles.container, { backgroundColor: isDark ? '#000' : '#fff' }]}
+      style={[
+        styles.container,
+        {
+          backgroundColor: isDark ? '#000' : '#fff',
+        },
+      ]}
     >
-      <ScrollView
-        contentContainerStyle={[
-          styles.scrollContent,
-          {
-            paddingBottom: insets.bottom + 20,
-          },
-        ]}
-        showsVerticalScrollIndicator={false}
-      >
-        {!generatedMeme && <Hero />}
+      {!generatedMeme && <Hero />}
 
-        <View style={styles.memeContainer}>
-          {generatedMeme && (
-            <Image
-              source={{ uri: generatedMeme }}
-              style={styles.memeImage}
-              resizeMode="contain"
-            />
-          )}
-        </View>
-        <View style={styles.promptContainer}>
-          <Text style={[styles.title, { color: isDark ? '#fff' : '#000' }]}>
-            Generate a Meme
-          </Text>
-
-          <TextInput
-            style={[
-              styles.input,
-              {
-                backgroundColor: isDark ? '#333' : '#f0f0f0',
-                color: isDark ? '#fff' : '#000',
-                borderColor: isDark ? '#666' : '#ddd',
-              },
-            ]}
-            placeholder="Enter your meme idea..."
-            placeholderTextColor={isDark ? '#999' : '#666'}
-            value={prompt}
-            onChangeText={setPrompt}
-            multiline
+      <View style={styles.memeContainer}>
+        {generatedMeme && (
+          <Image
+            source={{ uri: generatedMeme }}
+            style={styles.memeImage}
+            resizeMode="contain"
           />
+        )}
+      </View>
+      <View style={styles.promptContainer}>
+        <Text style={[styles.title, { color: isDark ? '#fff' : '#000' }]}>
+          Generate a Meme
+        </Text>
 
-          <TouchableOpacity
-            style={[
-              styles.button,
-              { backgroundColor: isDark ? '#444' : '#007AFF' },
-            ]}
-            onPress={handleGenerate}
-            disabled={loading}
-          >
-            {loading ? (
-              <ActivityIndicator color="#fff" />
-            ) : (
-              <>
-                <MaterialIcons name="add-a-photo" size={24} color="#fff" />
-                <Text style={styles.buttonText}>Generate Meme</Text>
-              </>
-            )}
-          </TouchableOpacity>
-        </View>
-        {/* )} */}
-        {error && <Text style={styles.error}>{error}</Text>}
-      </ScrollView>
+        <TextInput
+          style={[
+            styles.input,
+            {
+              backgroundColor: isDark ? '#333' : '#f0f0f0',
+              color: isDark ? '#fff' : '#000',
+              borderColor: isDark ? '#666' : '#ddd',
+            },
+          ]}
+          placeholder="Enter your meme idea..."
+          placeholderTextColor={isDark ? '#999' : '#666'}
+          value={prompt}
+          onChangeText={setPrompt}
+          multiline
+        />
+
+        <TouchableOpacity
+          style={[
+            styles.button,
+            { backgroundColor: isDark ? '#444' : '#007AFF' },
+          ]}
+          onPress={handleGenerate}
+          disabled={loading}
+        >
+          {loading ? (
+            <ActivityIndicator color="#fff" />
+          ) : (
+            <>
+              <MaterialIcons name="add-a-photo" size={24} color="#fff" />
+              <Text style={styles.buttonText}>Generate Meme</Text>
+            </>
+          )}
+        </TouchableOpacity>
+      </View>
+
+      {error && <Text style={styles.error}>{error}</Text>}
     </SafeAreaView>
   )
 }
@@ -137,8 +130,6 @@ export default function GenerateScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  scrollContent: {
     padding: 20,
     flexGrow: 1,
   },
@@ -166,7 +157,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     padding: 15,
     borderRadius: 8,
-    marginBottom: 20,
+    marginBottom: 75,
   },
   buttonText: {
     color: '#fff',
