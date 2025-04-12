@@ -30,18 +30,9 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="house.fill" color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="Generate"
-        options={{
           title: 'Generate',
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="pencil" color={color} />
+            <IconSymbol size={28} name="photo.fill" color={color} />
           ),
         }}
       />
@@ -51,6 +42,15 @@ export default function TabLayout() {
           title: 'History',
           tabBarIcon: ({ color }) => (
             <IconSymbol size={28} name="clock.fill" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="Settings"
+        options={{
+          title: 'Settings',
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={28} name="gearshape.fill" color={color} />
           ),
         }}
       />
