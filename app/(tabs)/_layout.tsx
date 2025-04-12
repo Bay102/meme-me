@@ -37,11 +37,20 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="explore"
+        name="Generate"
         options={{
-          title: 'Explore',
+          title: 'Generate',
           tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="paperplane.fill" color={color} />
+            <IconSymbol size={28} name="pencil" color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="History"
+        options={{
+          title: 'History',
+          tabBarIcon: ({ color }) => (
+            <IconSymbol size={28} name="clock.fill" color={color} />
           ),
         }}
       />
